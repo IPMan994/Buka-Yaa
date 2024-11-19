@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Birthday</title>
+    <link rel="stylesheet" href="bunga.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+
+    <style>
+        .yes-button,
+        .no-button {
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .yes-button {
+            background-color: #ff69b4;
+        }
+        
+        .yes-button a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .no-button {
+            background-color: #f8b1b1;
+        }
+        
+        #message {
+            display: none;
+            /* Sembunyikan elemen hingga window.onload */
+        }
+    </style>
+</head>
+
+<body class="not-loaded">
+    <h1>Flowers for you!</h1>
+    <div class="rain"></div>
+    <div class="flower" id="animation-flower">
+        <div class="f-wrapper">
+            <div class="flower__line"></div>
+            <div class="f">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__leaf flower__leaf--5"></div>
+                <div class="flower__leaf flower__leaf--6"></div>
+                <div class="flower__leaf flower__leaf--7"></div>
+                <div class="flower__leaf flower__leaf--8 flower__fall-down--yellow"></div>
+            </div>
+        </div>
+
+        <div class="f-wrapper f-wrapper--2">
+            <div class="flower__line"></div>
+            <div class="f">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__leaf flower__leaf--5"></div>
+                <div class="flower__leaf flower__leaf--6"></div>
+                <div class="flower__leaf flower__leaf--7"></div>
+                <div class="flower__leaf flower__leaf--8 flower__fall-down--pink"></div>
+            </div>
+        </div>
+
+        <div class="f-wrapper f-wrapper--3">
+            <div class="flower__line"></div>
+            <div class="f">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__leaf flower__leaf--5"></div>
+                <div class="flower__leaf flower__leaf--6"></div>
+                <div class="flower__leaf flower__leaf--7"></div>
+                <div class="flower__leaf flower__leaf--8 flower__fall-down--purple"></div>
+            </div>
+        </div>
+        <div class="flower__glass"></div>
+    </div>
+
+    <div id="message">
+        <p>Kamu suka aku aku nggk</p>
+        <div class="button-container">
+            <button class="yes-button" id="yes-button" type="button">
+                <a href="https://wa.me/6289603600714" target="_blank">Iya, aku suka sama kamu</a>
+            </button>
+            <button class="no-button" id="no-button" type="button" action="javascript:void(0);">Tidak dan tidak akan pernah suka</button>
+        </div>
+    </div>
+
+    <script src="bunga.js"></script>
+    <script>
+        // Menampilkan pesan dan tombol setelah halaman dimuat sepenuhnya
+        window.onload = function() {
+            document.getElementById('message').style.display = 'block';
+        };
+
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+
+        yesButton.addEventListener('click', () => {
+            logInteraction("User clicked: Iya, aku suka sama kamu");
+        });
+
+        noButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Cegah refresh
+            logInteraction("User clicked: Tidak dan tidak akan pernah suka");
+            moveButton(); // Pindahkan tombol
+        });
+
+        function moveButton() {
+            const randomX = Math.floor(Math.random() * 80) + 10; // Posisi X acak
+            const randomY = Math.floor(Math.random() * 80) + 10; // Posisi Y acak
+            noButton.style.position = 'absolute';
+            noButton.style.left = randomX + '%';
+            noButton.style.top = randomY + '%';
+        }
+
+        function logInteraction(response) {
+            console.log(response); // Log di konsol
+            // Mengirim data ke server (pastikan server berjalan di localhost:3000)
+            fetch('http://localhost:4000/api/log', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        response: response
+                    })
+                })
+                .then(response => response.json())
+                .then(data => console.log('Success:', data))
+                .catch((error) => console.error('Error:', error));
+        }
+    </script>
+</body>
+
+</html>

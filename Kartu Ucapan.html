@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Ucapan Ulang Tahun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sticker-background"></div>
+    <div class="card-container">
+        <div class="card cover-card" onclick="toggleCard()">
+            <div class="polaroid">
+                <img src="assets/Yaya 7.jpg" alt="Cover Photo">
+            </div>
+            <h1>Happy Birthday</h1>
+        </div>
+        <div class="card content-card" onclick="toggleCard()">
+            <div class="photos">
+                <div class="polaroid">
+                    <img src="assets/Yaya 9.jpg" alt="Photo 1">
+                </div>
+                <div class="polaroid">
+                    <img src="assets/Yaya 6.jpg" alt="Photo 2">
+                </div>
+                <div class="polaroid">
+                    <img src="assets/Yaya 8.jpg" alt="Photo 3">
+                </div>
+            </div>
+            <div class="message">
+                <h2>Selamat Ulang Tahun!</h2>
+                <p>Happy Birthday Alya Tisa Ladespa, semoga kamu dilimpahkan rezekinya dilancarkan kuliahnya sampai
+                    nanti lulus. Maaf buat foto foto nya aku ambil dari hightlight kamu yaa, saolnya aku gk punya
+                    foto kamu jadi aku pake yang dari hightlight aja hehe, juga maaf juga kalo wajah temen-temen kamu
+                    aku sensor yaa🙏. sorry ya kalo misal web ini banyak
+                    kurangnya. Love You yaya!!🩷🩷</p>
+                <p>From Irham</p>
+            </div>
+        </div>
+    </div>
+    <div class="music-player">
+        <select id="songSelector" onchange="changeSong()">
+            <option value="song1.mp3">Birthday Song</option>
+            <option value="song2.mp3">Lagu 2</option>
+            <option value="song3.mp3">Lagu 3</option>
+        </select>
+        <button id="playPauseBtn" onclick="togglePlayPause()"></button>
+        <audio id="audioPlayer" autoplay>
+            <source id="audioSource" src="assets/Music/Korean version.mp3" type="audio/mp3">
+            <source id="audioSource" src="song3.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

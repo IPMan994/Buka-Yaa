@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Edu AU VIC WA NT Hand", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f8ff;
+  overflow: hidden;
+}
+
+.sticker-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('assets/Yaya\ 12.jpg') repeat;
+  z-index: -1;
+  opacity: 0.8;
+  /* animation: gyro-cursor 10s infinite linear;  */
+}
+
+@keyframes gyro-cursor {
+  from { transform: translate(0, 0); }
+  to { transform: translate(100px, 100px); }
+}
+
+.card-container {
+  position: relative;
+  width: 500px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: #ffcccb;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  backface-visibility: hidden;
+}
+
+.cover-card {
+  background-color: #ffcccb;
+}
+
+.cover-card .polaroid {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cover-card .polaroid img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cover-card h1 {
+  font-size: 32px;
+  color: #000;
+  text-align: center;
+}
+
+.content-card {
+  background-color: #ffcccb;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  transform: rotateY(180deg);
+}
+
+.photos {
+  position: absolute;
+  top: 12px;
+  left: -90px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 1px; */
+}
+
+.photos .polaroid {
+  width: 80px;
+  height: 116px;
+  background-color: #ffcccb;
+  padding: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 1px 1px 10px;
+}
+
+.photos img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+}
+
+.message {
+  margin-top: 2px;
+  text-align: center;
+}
+
+.message h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #000;
+}
+
+.message p {
+  font-size: 16px;
+  color: #000;
+}
+
+.card-container.open .cover-card {
+  transform: rotateY(-180deg);
+}
+
+.card-container.open .content-card {
+  transform: rotateY(0deg);
+}
+
+.music-player {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffcccb;
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+}
+
+#songSelector {
+  width: 80px;
+  background-color: #ffcccb;
+  margin-bottom: 10px;
+  border: none;
+}
+
+#playPauseBtn {
+  background: url('cd.png') no-repeat center center;
+  background-size: cover;
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
